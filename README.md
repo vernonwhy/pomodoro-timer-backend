@@ -26,6 +26,7 @@ $ npm install
 ### Prerequisites
 
 - Docker
+- Rename `.env.sample` to `.env`
 
 ### Running the app
 
