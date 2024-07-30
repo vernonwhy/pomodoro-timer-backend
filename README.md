@@ -44,10 +44,8 @@ $ npm run start:dev
 $ npm run test
 
 # e2e tests
+$ docker compose up
 $ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
 
 ## License

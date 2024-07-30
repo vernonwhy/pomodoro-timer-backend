@@ -1,6 +1,6 @@
-import { Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { PomodoroTimerService } from './pomodoro-timer.service';
-import { PomodoroPhase, PomodoroSessionDto } from './pomodoro-timer.types';
+import { PomodoroSessionDto } from './pomodoro-timer.types';
 
 @Controller('timer')
 export class PomodoroTimerController {
@@ -20,31 +20,12 @@ export class PomodoroTimerController {
   }
 
   @Post('/:pomodoroId/pause')
-  async pauseSession(@Param('pomodoroId') pomodoroId: number) {
+  async pauseSession(@Param('pomodoroId') pomodoroId: number): Promise<void> {
     return await this.pomodoroTimerService.pausePomodoroTimer(pomodoroId);
   }
 
   @Post('/:pomodoroId/unpause')
-  async unpauseSession(@Param('pomodoroId') pomodoroId: number) {
+  async unpauseSession(@Param('pomodoroId') pomodoroId: number): Promise<void> {
     return await this.pomodoroTimerService.unpausePomodoroTimer(pomodoroId);
-  }
-
-  @Post('/test')
-  test() {
-    return this.pomodoroTimerService.calculatePomodoroPhases({
-      userConfig: {
-        pomodoroNumber: 4,
-        workLength: 25 * 60,
-        shortBreakLength: 5 * 60,
-        longBreakLength: 15 * 60,
-      },
-      elapsedStates: {
-        currentPhase: PomodoroPhase.Working,
-        remainingTime: 3600 * 3,
-        pomodoros: 0,
-        shortBreaks: 0,
-        longBreaks: 0,
-      },
-    });
   }
 }

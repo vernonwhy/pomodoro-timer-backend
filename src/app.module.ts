@@ -2,11 +2,9 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
-import { PomodoroTimerController } from './modules/pomodoro-timer/pomodoro-timer.controller';
-import { PomodoroTimerService } from './modules/pomodoro-timer/pomodoro-timer.service';
-import { UserConfigService } from './modules/user-config/user-config.service';
-import { UsersController } from './modules/user/users.controller';
-import { UsersService } from './modules/user/users.service';
+import { PomodoroTimerModule } from './modules/pomodoro-timer/pomorodo-timer.module';
+import { UserConfigModule } from './modules/user-config/user-config.module';
+import { UsersModule } from './modules/user/users.module';
 
 @Module({
   imports: [
@@ -26,11 +24,13 @@ import { UsersService } from './modules/user/users.service';
         synchronize: true,
         autoLoadEntities: true,
         namingStrategy: new SnakeNamingStrategy(),
+        logging: true,
       }),
       inject: [ConfigService],
     }),
+    UsersModule,
+    PomodoroTimerModule,
+    UserConfigModule,
   ],
-  controllers: [PomodoroTimerController, UsersController],
-  providers: [PomodoroTimerService, UserConfigService, UsersService],
 })
 export class AppModule {}

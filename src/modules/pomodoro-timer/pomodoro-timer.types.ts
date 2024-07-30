@@ -1,18 +1,9 @@
 export type PomodoroSessionDto = {
-  timeRemaining: number;
-  pomodoros: number;
-  shortBreaks: number;
-  longBreaks: number;
-  userConfig: {
-    pomodoroNumber: number;
-    workLength: number;
-    shortBreakLength: number;
-    longBreakLength: number;
-  };
+  pomodoroId: number;
+  timeRemainingForPhase: number;
   currentPhase: PomodoroPhase;
   paused: boolean;
 };
-
 
 export enum PomodoroPhase {
   Working = 'Working',
@@ -21,9 +12,6 @@ export enum PomodoroPhase {
 }
 
 export type PomodoroStates = {
-  remainingTime: number;
+  timeRemainingForPhase: number;
   currentPhase: PomodoroPhase;
-  pomodoros: number;
-  shortBreaks: number;
-  longBreaks: number;
 };

@@ -3,7 +3,6 @@ import { UsersService } from './users.service';
 
 export class RegisterUserDto {
   email: string;
-  password: string;
 }
 
 @Controller('users')

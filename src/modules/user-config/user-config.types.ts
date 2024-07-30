@@ -1,0 +1,5 @@
+
+export const DEFAULT_POMODORO_NUMBER = 4;
+export const DEFAULT_WORKING_TIME = 25 * 60 * 1000; 
+export const DEFAULT_SHORT_BREAK_TIME = 5 * 60 * 1000;
+export const DEFAULT_LONG_BREAK_TIME = 15 * 60 * 1000;

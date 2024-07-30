@@ -5,10 +5,4 @@ import { BaseModel } from './base.model';
 export class User extends BaseModel {
   @Column()
   email: string;
-
-  @Column()
-  password: string;
-
-  @Column()
-  webhookNotificationUrl: string;
 }
